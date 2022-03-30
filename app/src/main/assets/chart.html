@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src="smoothie.js"></script>
+    <script>
+        let data = 0;
+        function setData(value){
+            data = value;
+        }
+
+        let random = new TimeSeries();
+        setInterval(function(){
+            random.append(new Date().getTime(), data);
+        }, 300);
+
+        function createTimeLine(){
+            let chart = new SmoothieChart();
+            chart.addTimeSeries(random, {
+                strokeStyle: 'rgba(0, 255, 0, 0.5)',
+                    fillStyle: 'rgba(0, 255, 0, 0.5)',
+                    lineWidth: 4
+            });
+
+            let chartCanvas = document.getElementById("sensorChart");
+            chartCanvas.width = window.innerWidth - 20;
+            chartCanvas.height = window.innerWidth/3;
+
+            chart.streamTo(chartCanvas, 300);
+        }
+    </script>
+</head>
+<body onload="createTimeLine()">
+<div style="text-align:center; padding: 40px; font-size: 40px">
+    Sensor Real-Time Data
+</div>
+<canvas id="sensorChart"></canvas>
+</body>
+</html>
