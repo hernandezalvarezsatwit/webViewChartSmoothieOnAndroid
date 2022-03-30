@@ -1,11 +1,8 @@
 package edu.wit.mobileapp.myrtchart;
-
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 // Zoom out the page to fit the display
         webview.getSettings().setLoadWithOverviewMode(true);
         webview.getSettings().setUseWideViewPort(true);
+        //NOTICE: android_asset NO assetSSSSS
         webview.loadUrl("file:///android_asset/chart.html");
     }
 }
